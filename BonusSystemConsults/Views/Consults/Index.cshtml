@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BonusSystemConsults.Models.Consult>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Lägg till konsult", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ConsultID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmploymentDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConsultID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmploymentDate)
+        </td>
+        <td>
+            @Html.ActionLink("Ändra", "Edit", new { id = item.ConsultID }) |
+            @Html.ActionLink("Detaljer", "Details", new { id = item.ConsultID }) |
+            @Html.ActionLink("Ta bort", "Delete", new { id = item.ConsultID })
+        </td>
+    </tr>
+}
+
+</table>

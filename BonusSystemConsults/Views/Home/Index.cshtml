@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Gisys bonussystem</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <p>
+            Detta system är för att räkna ut hur mycket bonus varje kunsult skall ha i förhållande till anställningstid i år liksom
+            företagets netto resultat. Denna beräkning tar också hänsyn till antalet fakturerade timmar som konsultan har jobbat.
+        </p>
+        <div class="col-md-6">
+            <h4>Lägg till konsult</h4>
+            <div class="form-group">
+                <a href='@Url.Action("Create", "Consults")' class="btn btn-primary">Ny konsult</a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4>Skapa Bonusberäkning</h4>
+            <div class="form-group">
+                <a href='@Url.Action("PostBonus", "Bonuses")' class="btn btn-primary">Skapa bonus</a>
+            </div>
+        </div>
+    </div>
+</div>

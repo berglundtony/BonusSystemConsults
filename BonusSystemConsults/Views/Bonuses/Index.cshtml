@@ -1,0 +1,87 @@
+﻿@model List<BonusSystemConsults.Models.BonusViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Skapa bonus", "PostBonus")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.Raw("Anställningsnr.")
+        </th>
+        <th>
+            @Html.Raw("Namn")
+        </th>
+        <th>
+            @Html.Raw("Nettoresultat")
+        </th>
+        <th>
+            @Html.Raw("Bonuspott")
+        </th>
+        <th>
+            @Html.Raw("Sammanlagda bonustimmar")
+        </th>
+        <th>
+            @Html.Raw("Debiterade timmar")
+        </th>
+        <th>
+            @Html.Raw("Bonustimmar")
+        </th>
+        <th>
+            @Html.Raw("Anställningstid i år")
+        </th>
+        <th>
+            @Html.Raw("Bonus i kr")
+        </th>
+        <th>
+            @Html.Raw("Reg.datum")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConsultID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fullname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NetResult)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BonusPot)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalHoursWithBonus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChargedHours)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChargedHoursWithBonus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PeriodOfEmployment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BonusInMoney)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BonusDate)
+        </td>
+        <td>
+            @Html.ActionLink("Detaljer", "Details", new { id = item.BonusID }) |
+            @Html.ActionLink("Ta bort", "Delete", new { id = item.BonusID })
+        </td>
+    </tr>
+}
+
+</table>

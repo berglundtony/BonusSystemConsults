@@ -1,0 +1,97 @@
+﻿@model BonusSystemConsults.Models.PostBonus
+
+@{
+    ViewBag.Title = "Skapa bonus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Ajax.BeginForm("PostBonus", "Bonuses", Model, new AjaxOptions { HttpMethod = "POST", OnSuccess = "SaveOnSuccess(data)" }, new { id = "CreateBonus" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Skapa bonus</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ConsultID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ConsultID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ConsultID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ChargedHours, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ChargedHours, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ChargedHours, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NetResult, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NetResult, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NetResult, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12" id="Message">
+                @Html.ValueFor(model => model.Message)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Bonuslista", "Index")
+</div>
+<div id="postresult">
+    @Html.Partial("GetPostedBonus", Model.GetPostedBonus)
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/unobtrusive")
+}
+
+<script>
+    $("#postresult").hide();
+    function SaveOnSuccess(data) {
+        if (data.IsOK == true) {
+            $("#Message").html(data.Message).removeClass("text-danger").addClass("text-success")
+            var BonusID = data.BonusID;
+            console.log("BonusID: " + BonusID)
+            $.ajax({
+                cache: false,
+                type: 'Get',
+                url: 'GetPostedBonus',
+                data: { 'BonusID': BonusID },
+                success: function (data) {
+                    $("#postresult").show();
+                    $("#postresult").html(data);
+                }
+
+            });
+            $.ajax({
+                cache: false,
+                type: 'Get',
+                url: 'Bonuses/PostBonus',
+                success: function (data) {
+
+                }
+            });
+
+        }
+        else {
+            $("#Message").html(data.Message).addClass("text-danger")
+        }
+    }
+</script>

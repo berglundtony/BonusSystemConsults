@@ -1,0 +1,83 @@
+﻿@model BonusSystemConsults.Models.Bonuses
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bonus</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ConsultID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConsultID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NetResult)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NetResult)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BonusPot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BonusPot)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalHoursWithBonus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalHoursWithBonus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChargedHours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChargedHours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChargedHoursWithBonus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChargedHoursWithBonus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BonusInMoney)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BonusInMoney)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BonusDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BonusDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BonusID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

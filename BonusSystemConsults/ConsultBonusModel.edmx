@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ConsultBonusSystemDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__EFMigrationsHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bonus">
+          <Key>
+            <PropertyRef Name="BonusID" />
+          </Key>
+          <Property Name="BonusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConsultID" Type="int" Nullable="false" />
+          <Property Name="ChargedHours" Type="int" Nullable="false" />
+          <Property Name="ChargedHoursWithBonus" Type="int" />
+          <Property Name="TotalHoursWithBonus" Type="int" />
+          <Property Name="BonusPot" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="NetResult" Type="int" Nullable="false" />
+          <Property Name="PeriodOfEmployment" Type="int" />
+          <Property Name="BonusInMoney" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="BonusDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Consults">
+          <Key>
+            <PropertyRef Name="ConsultID" />
+          </Key>
+          <Property Name="ConsultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmploymentDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ConsultBonusSystemDBModelStoreContainer">
+          <EntitySet Name="__EFMigrationsHistory" EntityType="Self.__EFMigrationsHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bonus" EntityType="Self.Bonus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Consults" EntityType="Self.Consults" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ConsultBonusSystemDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bonus">
+          <Key>
+            <PropertyRef Name="BonusID" />
+          </Key>
+          <Property Name="BonusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConsultID" Type="Int32" Nullable="false" />
+          <Property Name="ChargedHours" Type="Int32" Nullable="false" />
+          <Property Name="ChargedHoursWithBonus" Type="Int32" />
+          <Property Name="TotalHoursWithBonus" Type="Int32" />
+          <Property Name="BonusPot" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="NetResult" Type="Int32" Nullable="false" />
+          <Property Name="PeriodOfEmployment" Type="Int32" />
+          <Property Name="BonusInMoney" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="BonusDate" Type="DateTime" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Consults">
+          <Key>
+            <PropertyRef Name="ConsultID" />
+          </Key>
+          <Property Name="ConsultID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmploymentDate" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityContainer Name="ConsultBonusSystemDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bonus" EntityType="Self.Bonus" />
+          <EntitySet Name="Consults" EntityType="Self.Consults" />
+          <EntitySet Name="C__EFMigrationsHistory" EntityType="ConsultBonusSystemDBModel.C__EFMigrationsHistory" />
+        </EntityContainer>
+        <EntityType Name="C__EFMigrationsHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ConsultBonusSystemDBModelStoreContainer" CdmEntityContainer="ConsultBonusSystemDBEntities1">
+          <EntitySetMapping Name="Bonus">
+            <EntityTypeMapping TypeName="ConsultBonusSystemDBModel.Bonus">
+              <MappingFragment StoreEntitySet="Bonus">
+                <ScalarProperty Name="PeriodOfEmployment" ColumnName="PeriodOfEmployment" />
+                <ScalarProperty Name="BonusID" ColumnName="BonusID" />
+                <ScalarProperty Name="ConsultID" ColumnName="ConsultID" />
+                <ScalarProperty Name="ChargedHours" ColumnName="ChargedHours" />
+                <ScalarProperty Name="ChargedHoursWithBonus" ColumnName="ChargedHoursWithBonus" />
+                <ScalarProperty Name="BonusPot" ColumnName="BonusPot" />
+                <ScalarProperty Name="NetResult" ColumnName="NetResult" />
+                <ScalarProperty Name="TotalHoursWithBonus" ColumnName="TotalHoursWithBonus" />
+                <ScalarProperty Name="BonusInMoney" ColumnName="BonusInMoney" />
+                <ScalarProperty Name="BonusDate" ColumnName="BonusDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Consults">
+            <EntityTypeMapping TypeName="ConsultBonusSystemDBModel.Consults">
+              <MappingFragment StoreEntitySet="Consults">
+                <ScalarProperty Name="ConsultID" ColumnName="ConsultID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmploymentDate" ColumnName="EmploymentDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C__EFMigrationsHistory">
+            <EntityTypeMapping TypeName="ConsultBonusSystemDBModel.C__EFMigrationsHistory">
+              <MappingFragment StoreEntitySet="__EFMigrationsHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
